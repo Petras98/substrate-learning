@@ -32,6 +32,7 @@ pub mod pallet {
 		Transfer(T::AccountId, T::AccountId, u64), // (from, to, value)
 	}
 
+	//define storage getter for balance
 	#[pallet::storage]
 	#[pallet::getter(fn get_balance)]
 	pub(super) type Balances<T: Config> =
@@ -42,11 +43,14 @@ pub mod pallet {
 		21000000
 	}
 
+	//define storage getter for the total supply
 	#[pallet::storage]
 	#[pallet::getter(fn total_supply)]
 	pub(super) type TotalSupply<T: Config> =
 		StorageValue<_, u64, ValueQuery, TotalSupplyDefaultValue<T>>;
 
+
+	//storage getter for checking if initialized
 	#[pallet::storage]
 	#[pallet::getter(fn is_init)]
 	pub(super) type Init<T: Config> = StorageValue<_, bool, ValueQuery>;
