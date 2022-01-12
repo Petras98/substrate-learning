@@ -1,0 +1,21 @@
+[package]
+name = "test-node"
+version = "0.2.0"
+authors = ["David Craven <david@craven.ch>"]
+edition = "2018"
+publish = false
+
+[dependencies]
+sc-executor = "0.8.0"
+sp-core = "2.0.0"
+sp-runtime = "2.0.0"
+sunshine-codec = { git = "https://github.com/sunshine-protocol/sunshine-core" }
+sunshine-node-utils = { git = "https://github.com/sunshine-protocol/sunshine-core" }
+test-runtime = { path = "../runtime" }
+# cli deps
+sc-cli = "0.8.0"
+sc-service = { version = "0.8.0", default-features = false }
+structopt = "0.3.18"
+
+[build-dependencies]
+substrate-build-script-utils = "2.0.0"

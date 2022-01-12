@@ -1,0 +1,37 @@
+name: Node CI Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  rust-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Setup build env
+        run: sudo apt install -y cmake pkg-config libssl-dev git build-essential clang libclang-dev curl
+
+      - name: Install Rustup
+        run: |
+          curl https://sh.rustup.rs -sSf | sh -s -- -y
+          source ~/.cargo/env
+          rustup default stable
+          rustup update nightly
+          rustup update stable
+          rustup target add wasm32-unknown-unknown --toolchain nightly
+
+      - name: Check Build
+        run: |
+          SKIP_WASM_BUILD=1 cargo check --release
+
+      - name: Check Build for Benchmarking
+        run: >
+          pushd node &&
+          cargo check --features=runtime-benchmarks --release

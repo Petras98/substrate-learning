@@ -1,0 +1,14 @@
+[profile.release]
+panic = 'unwind'
+
+[workspace]
+members = [
+    'node',
+    'pallets/template',
+    "identity/cli",
+    "identity/client",
+    "identity/ffi",
+    "identity/pallet",
+    "identity/utils",
+    'runtime',
+]

@@ -1,0 +1,27 @@
+[package]
+name = "sunshine-identity-ffi"
+version = "0.2.3"
+authors = ["Shady Khalifa <shekohex@gmail.com>"]
+edition = "2018"
+description = "FFI for the identity module."
+license = "ISC"
+documentation = "https://docs.rs/sunshine-identity-ffi"
+repository = "https://github.com/sunshine-protocol/sunshine-identity"
+
+[dependencies]
+substrate-subxt = "0.12.0"
+sunshine-client-utils = { git = "https://github.com/sunshine-protocol/sunshine-core" }
+sunshine-ffi-utils = { git = "https://github.com/sunshine-protocol/sunshine-core" }
+sunshine-identity-client = { version = "^0.2", path = "../client" }
+thiserror = "1.0.20"
+
+[dev-dependencies]
+test-client = { path = "../../bin/client" }
+
+[features]
+default = ["identity-key", "identity-wallet", "identity-device", "identity-id", "identity-account"]
+identity-key = []
+identity-wallet = []
+identity-device = []
+identity-id = []
+identity-account = []
